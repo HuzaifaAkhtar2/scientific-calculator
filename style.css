@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --color-black: #000;
+  --color-white: #fff;
+  --color-display: #1a1a1a;
+  --color-border-muted: #4a4a4a;
+  --color-function-border: #777;
+  --color-placeholder: #bdbdbd;
+  --calculator-width: 430px;
+  --radius-panel: 8px;
+  --space-page: 20px;
+  --space-panel: 20px;
+  --space-grid: 10px;
+  --transition-color: 150ms ease;
+  --transition-press: 100ms ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-page);
+  background: var(--color-black);
+}
+
+.calculator {
+  width: min(100%, var(--calculator-width));
+  padding: var(--space-panel);
+  border-radius: var(--radius-panel);
+  background: var(--color-black);
+  border: 1px solid var(--color-white);
+}
+
+input {
+  width: 100%;
+  height: 94px;
+  border: 1px solid var(--color-border-muted);
+  border-radius: var(--radius-panel);
+  padding: 18px;
+  margin-bottom: 18px;
+  background: var(--color-display);
+  font-size: clamp(1.8rem, 8vw, 2.5rem);
+  text-align: right;
+  cursor: pointer;
+  color: var(--color-white);
+  resize: none;
+}
+
+input::placeholder {
+  color: var(--color-placeholder);
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-grid);
+}
+
+button {
+  border: 1px solid var(--color-white);
+  width: 100%;
+  aspect-ratio: 1;
+  min-width: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-white);
+  font-size: 1rem;
+  box-shadow: none;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-color),
+    color var(--transition-color),
+    transform var(--transition-press);
+}
+
+button:hover,
+button:focus-visible {
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+button:active {
+  transform: scale(0.94);
+}
+
+.operator,
+.equalBtn {
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
+.operator:hover,
+.operator:focus-visible,
+.equalBtn:hover,
+.equalBtn:focus-visible {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.function {
+  border-color: var(--color-function-border);
+  background: var(--color-display);
+}
+
+@media (max-width: 420px) {
+  body {
+    padding: 10px;
+  }
+  .calculator {
+    padding: 14px;
+  }
+  .keypad {
+    gap: 7px;
+  }
+  button {
+    font-size: 0.85rem;
+  }
+}
